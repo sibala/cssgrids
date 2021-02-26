@@ -1,10 +1,16 @@
-.container {
+[class*="container"] {
     height: 300px;
     width: 600px;
     border: 1px solid #333;
     margin: 20px;
     display: grid;
+}
 
+
+/**
+ * Grids with specific positioning
+ */
+.container1 {
     grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
     grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
 }
@@ -39,4 +45,47 @@
 
 .item-c {
     background-color: orange;
+}
+
+
+/**
+ * Grids without specific positioning
+ */
+
+.container2 {
+    grid-template-columns: repeat(3, 1fr); /* 1fr 1fr 1fr */
+    grid-template-rows: auto; /* default value */
+    
+    /* row-gap: 15px;
+    column-gap: 10px; */
+    /* short-hand */
+    gap: 15px 10px; /* <grid-row-gap> <grid-column-gap>; */
+
+    padding: 10px;
+
+
+    align-items: stretch; /* start | end | center | stretch (default) */
+    justify-items: center; /* start | end | center | stretch (default) */
+    /* short-hand */
+    place-items: stretch stretch; /* <align-items> <justify-items> */
+
+
+    /* Needs free available space to move around */
+    /* Positions column-wise */
+    justify-content: space-between; /* start | end | center | stretch (default) | space-around | space-between | space-evenly;*/
+    /* Positions row-wise */
+    align-content: space-evenly;/* start | end | center | stretch | space-around | space-between | space-evenly;*/
+    /* short-hand */
+    place-content: stretch stretch; /* <align-content> <justify-content> */
+}
+
+[class*="box"] {
+    border: 1px solid #333;
+}
+
+.box5 {
+    align-self: center; /* start | end | center | stretch (default) */
+    justify-self: center; /* start | end | center | stretch (default) */
+    /* short-hand */
+    place-self: center center; /* <align-self> <justify-self> */
 }
