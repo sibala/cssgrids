@@ -51,7 +51,6 @@
 /**
  * Grids without specific positioning
  */
-
 .container2 {
     grid-template-columns: repeat(3, 1fr); /* 1fr 1fr 1fr */
     grid-template-rows: auto; /* default value */
@@ -88,4 +87,56 @@
     justify-self: center; /* start | end | center | stretch (default) */
     /* short-hand */
     place-self: center center; /* <align-self> <justify-self> */
+}
+
+
+/**
+ * Grid areas
+ */
+
+
+.container3 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto; /* default value */
+
+    /*
+        To think about when working with grid areas
+        1. All children need to begiven a grid-area name
+        2. All children need to be positioned positioned in grid-template-areas
+        3. The elements must be a square or rectangle, meaning must have 4 corners, or else the layout will collapse
+        4. Single elements/sections need to be in one piece. Must remain a single section in the layout
+        5. All rows must have same number of cells
+    */
+    grid-template-areas: 
+        "header header header sidebar"
+        "content content . sidebar"
+        "footer footer footer sidebar";
+    
+    /* 
+        When assigning only 1 value (instead of 2), 
+        the value applies for both column and row gap 
+    */
+    gap: 10px; 
+}
+
+header {
+    background-color: tomato;
+    grid-area: header;
+}
+
+main {
+    background-color: wheat;
+    grid-area: content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+aside {
+    background-color: lightcyan;
+    grid-area: sidebar;
+}
+
+footer {
+    background-color: lightskyblue;
+    grid-area: footer;
 }
